@@ -71,9 +71,8 @@ var timer = document.getElementById("timer");
 var gameScoreEl = document.getElementById("end-game-score");
 var userScore = Number(0);
 var timeRemaining = 0;
-var highScoreList = ;
-var nameEntry = ""
-console.log(answerButtons)
+// var highScoreList = [];
+// var nameEntry = ""
 
 // localStorage.getItem("highScoreList", highScoreList);
 // var currentQuestionIndex = Number([Math.floor(Math.random()*questionsArray.length)])
@@ -105,9 +104,7 @@ function startQuiz() {
     for (i=0; i<4; i++) {
         answerButtons[i].classList.remove("hide")
     }
-
     newQuestion();
-    console.log(answerButtons)
 }
 
 // Selects random question from array
@@ -116,10 +113,6 @@ function newQuestion() {
     // console.log(currentQuestionIndex)
     currentQuestionObject = questionsArray[Math.floor(Math.random()*questionsArray.length)]
     displayQuestion();
-    console.log(currentQuestionObject)
-    console.log(currentQuestionObject.question)
-    console.log("first choice = "+ currentQuestionObject.choices[0])
-    console.log("answer index = "+ currentQuestionObject.answerIndex)
     return;
 }
 
@@ -191,8 +184,3 @@ function gameOver() {
         startButton.classList.remove("hide");
     // }
 }
-
-
-
-// When Highscore button is clicked:
-// Display list of highscores on seperate page???----------------------------------------------------FINISH<<<
