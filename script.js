@@ -59,17 +59,8 @@ var questionsArray = [{
     question: "Which of the following is a comment in Javascript?",
     choices: ["<!--comment-->", "/* comment */", "^^comment", "//comment"],
     answerIndex: 3
-}
-]
-
-// , {
-//     question: "",
-//     choices: ["", "", "", ""],
-//     answerIndex: 
-// }
-
+}]
 //End of questions array
-// ------------------------------------------------------
 
 // Define HTML elements as variables:
 var startButton = document.getElementById("start-stop");
@@ -80,8 +71,11 @@ var timer = document.getElementById("timer");
 var gameScoreEl = document.getElementById("end-game-score");
 var userScore = Number(0);
 var timeRemaining = 0;
+var highScoreList = ;
+var nameEntry = ""
 console.log(answerButtons)
 
+// localStorage.getItem("highScoreList", highScoreList);
 // var currentQuestionIndex = Number([Math.floor(Math.random()*questionsArray.length)])
 
 // When START button is clicked:
@@ -138,7 +132,7 @@ function displayQuestion() {
 
 
 Array.from(answerButtons).forEach(function (answerButton) {
-    answerButton.addEventListener("click", function (event) {
+    answerButton.addEventListener("click", function () {
         // debugger;
         // If answered correctly add to userScore.
         if (this.innerText == currentQuestionObject.choices[currentQuestionObject.answerIndex]) {
@@ -150,7 +144,7 @@ Array.from(answerButtons).forEach(function (answerButton) {
         }
         // Remove current question from questionsArray and load new question.
         // questionsArray.splice(currentQuestionIndex, 1);
-        // slash currentQuestionObject from questionsArray ----------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<
+        // slash currentQuestionObject from questionsArray ----------------------------------------------------FINISH<<<
         newQuestion()
         console.log("SCORE = " + userScore)
     });
@@ -175,15 +169,30 @@ function gameOver() {
     else{
     gameScoreEl.textContent = "You got " + userScore + " questions correct."
     }
-    // Display text entry for name with submit button.----------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<
-    // enter name and score into scoreboard array.----------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<
+    // Display text entry for name with submit button.----------------------------------------------------FINISH<<<
+    // enter name and score into scoreboard array.----------------------------------------------------FINISH<<<
 
+    // document.querySelector("submit").addEventListener("click", function() {
+        // nameEntry = document.querySelector("enter-name").value;
+        // showStart();
+    // })
 
+    // let newScoreObject = { 
+    // name: userName,
+    // score: userScore
+    // }
+    // highScoreList.push(newScoreObject)
+
+    // JSON.stringify(highScoreList);
+    // localStorage.setItem("highScoreList", highScoreList);
+    
     // When name is submitted display start button.
-    startButton.classList.remove("hide");
+    // function showStart() {
+        startButton.classList.remove("hide");
+    // }
 }
 
 
 
 // When Highscore button is clicked:
-// Display list of highscores on seperate page???----------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<
+// Display list of highscores on seperate page???----------------------------------------------------FINISH<<<

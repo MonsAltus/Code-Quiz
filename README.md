@@ -20,7 +20,7 @@ Here's some of my thought process:
 - Define variables for html elements
 
 - When START button is clicked:
-- Hide start button element and start timer.
+- Hide start button and scoreboard elements, and start timer.
 - Run function to choose random ojbect from the questions array.
 - Display first randomly chosen question.
 
@@ -34,12 +34,11 @@ Here's some of my thought process:
 - When timer reaches 0:
 - Hide question and div elements.
 - Display how many correct answers the user got.
-- Display text entry for name with submit button.
+- Display scoreboard.
+- Display form entry for name with submit button.
 - enter name and score into scoreboard array.
 - display start button after name is entered.
 
-- When Highscore button is clicked:
-- Display list of highscores.
 
 ### Links:
 [Website preview](./preview.png)<br>
