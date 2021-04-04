@@ -71,11 +71,6 @@ var timer = document.getElementById("timer");
 var gameScoreEl = document.getElementById("end-game-score");
 var userScore = Number(0);
 var timeRemaining = 0;
-// var highScoreList = [];
-// var nameEntry = ""
-
-// localStorage.getItem("highScoreList", highScoreList);
-// var currentQuestionIndex = Number([Math.floor(Math.random()*questionsArray.length)])
 
 // When START button is clicked:
 // Start timer and display first randomly chosen question.
@@ -85,6 +80,7 @@ startButton.addEventListener("click", function(){
     userScore = 0
 })
 
+// Countdown function.
 function startTimer() {
     timeRemaining = 45;
     var timerInterval = setInterval(function(){
@@ -97,6 +93,7 @@ function startTimer() {
     }, 1000)
 }
 
+// Hide start button and show questions/answer elements.
 function startQuiz() {
     gameScoreEl.textContent = ""
     startButton.classList.add("hide");
@@ -109,13 +106,12 @@ function startQuiz() {
 
 // Selects random question from array
 function newQuestion() {
-    // currentQuestionObject = questionsArray[currentQuestionIndex]
-    // console.log(currentQuestionIndex)
     currentQuestionObject = questionsArray[Math.floor(Math.random()*questionsArray.length)]
     displayQuestion();
     return;
 }
 
+//Display current question in question and answer elements.
 function displayQuestion() {
     questionText.textContent = currentQuestionObject.question;
     for (i=0; i<4; i++) {
@@ -123,10 +119,9 @@ function displayQuestion() {
     }
 }
 
-
+//When an answer button is clicked, compare with correct answer.
 Array.from(answerButtons).forEach(function (answerButton) {
     answerButton.addEventListener("click", function () {
-        // debugger;
         // If answered correctly add to userScore.
         if (this.innerText == currentQuestionObject.choices[currentQuestionObject.answerIndex]) {
             userScore++;
@@ -135,9 +130,6 @@ Array.from(answerButtons).forEach(function (answerButton) {
         else {
             timeRemaining -= 5
         }
-        // Remove current question from questionsArray and load new question.
-        // questionsArray.splice(currentQuestionIndex, 1);
-        // slash currentQuestionObject from questionsArray ----------------------------------------------------FINISH<<<
         newQuestion()
         console.log("SCORE = " + userScore)
     });
@@ -145,42 +137,19 @@ Array.from(answerButtons).forEach(function (answerButton) {
 
 // When the time runs out, Game is over.
 function gameOver() {
-    // debugger;
     // Set timer display to empty string.
     timer.textContent = "";
     // hide question element and answer buttons.
+    questionText.classList.add("hide");
     for (i=0; i<4; i++) {
         answerButtons[i].classList.add("hide")
     }
-    questionText.classList.add("hide");
-
-    // Set question and answer button text to empty string.
-    // Display how many correct answers out of questions asked.
+    // Display how many correct answers user selected.
     if (userScore == 1) {
         gameScoreEl.textContent = "You got " + userScore + " question correct."
     }
     else{
     gameScoreEl.textContent = "You got " + userScore + " questions correct."
     }
-    // Display text entry for name with submit button.----------------------------------------------------FINISH<<<
-    // enter name and score into scoreboard array.----------------------------------------------------FINISH<<<
-
-    // document.querySelector("submit").addEventListener("click", function() {
-        // nameEntry = document.querySelector("enter-name").value;
-        // showStart();
-    // })
-
-    // let newScoreObject = { 
-    // name: userName,
-    // score: userScore
-    // }
-    // highScoreList.push(newScoreObject)
-
-    // JSON.stringify(highScoreList);
-    // localStorage.setItem("highScoreList", highScoreList);
-    
-    // When name is submitted display start button.
-    // function showStart() {
         startButton.classList.remove("hide");
-    // }
 }
